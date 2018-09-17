@@ -8,7 +8,7 @@ import scala.reflect.ClassTag
   *
   * 底层实现是数组
   *
-  * @param capacity 容量
+  * @param capacity 容量，capacity变量其实可以不要，可以直接使用arr.length
   * @param ev$1
   * @tparam E
   */

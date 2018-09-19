@@ -25,7 +25,23 @@ class ArrayList[E <% Ordered[E] : ClassTag](private var capacity: Int = 5) exten
 
   override def isEmpty(): Boolean = currentSize == 0
 
-  override def contains(e: E): Unit = ???
+  override def contains(e: E): Boolean = {
+    for (i <- 0 until currentSize) {
+      if (arr(i) == e) {
+        return true
+      }
+    }
+    return false
+  }
+
+  override def find(e: E): Int = {
+    for (i <- 0 until currentSize) {
+      if (arr(i) == e) {
+        return i
+      }
+    }
+    return -1
+  }
 
   def resize(newCapacity: Int) = {
     println(s"resize capacity:$capacity newCapacity:$newCapacity")
@@ -37,14 +53,41 @@ class ArrayList[E <% Ordered[E] : ClassTag](private var capacity: Int = 5) exten
     capacity = newCapacity
   }
 
-  override def add(e: E): Boolean = {
+  //  override def addLast(e: E): Boolean = {
+  //    if (currentSize == capacity) {
+  //      resize(capacity * 2)
+  //    }
+  //    //就是往数组最后添加个值，需要判断是否需要扩容
+  //    arr(currentSize) = e
+  //    currentSize += 1
+  //    true
+  //  }
+
+  override def addLast(e: E): Boolean = add(currentSize, e)
+
+  override def addFirst(e: E): Boolean = add(0, e)
+
+  override def add(index: Int, e: E): Boolean = {
+    if (index < 0 || index > currentSize) {
+      throw new IndexOutOfBoundsException(s"$currentSize out of bounds")
+    }
     if (currentSize == capacity) {
       resize(capacity * 2)
     }
-    //就是往数组最后添加个值，需要判断是否需要扩容
-    arr(currentSize) = e
+    //最后一个元素也可以这样写
+    for (i <- index until currentSize reverse) {
+      arr(i + 1) = arr(i)
+    }
+    arr(index) = e
     currentSize += 1
     true
+  }
+
+  override def set(index: Int, e: E) = {
+    if (index < 0 || index > currentSize) {
+      throw new IndexOutOfBoundsException(s"$currentSize out of bounds")
+    }
+    arr(index) = e
   }
 
   /**
@@ -92,7 +135,7 @@ class ArrayList[E <% Ordered[E] : ClassTag](private var capacity: Int = 5) exten
     if (index < 0 || index > currentSize) {
       throw new IndexOutOfBoundsException(s"$currentSize out of bounds")
     }
-    if (size() <= capacity / 4) {
+    if (size() <= capacity / 4 && capacity > 4) {
       resize(capacity / 2)
     }
     val toRemovedEle = get(index)

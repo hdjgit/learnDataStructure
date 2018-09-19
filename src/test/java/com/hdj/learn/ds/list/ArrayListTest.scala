@@ -18,16 +18,38 @@ class ArrayListTest {
   def testAdd() = {
     val list: List[Int] = new ArrayList[Int]()
     for (i <- 0 to 100) {
-      list.add(i)
+      list.addLast(i)
     }
     println(s"list:$list")
   }
 
   @Test
+  def testAdd2() = {
+    val list: List[Int] = new ArrayList[Int]()
+    for (i <- 0 to 100) {
+      list.addLast(i)
+    }
+    list.add(1,10000)
+    println(s"list:$list")
+  }
+
+  @Test
+  def testAdd3() = {
+    val list: List[Int] = new ArrayList[Int]()
+    for (i <- 0 to 100) {
+      list.addLast(i)
+    }
+    list.add(101,10000)
+    println(s"list:$list")
+  }
+
+
+
+  @Test
   def removeEle() = {
     val list: List[Integer] = new ArrayList[Integer]()
     for (i <- 0 until 100) {
-      list.add(i)
+      list.addLast(i)
     }
 
     list.remove(5)
@@ -40,7 +62,7 @@ class ArrayListTest {
   def remove() = {
     val list: List[Integer] = new ArrayList[Integer]()
     for (i <- 0 until 20) {
-      list.add(i)
+      list.addLast(i)
     }
 
     for (i <- 0 until 20) {

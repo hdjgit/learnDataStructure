@@ -12,9 +12,17 @@ trait List[E] {
 
   def isEmpty(): Boolean
 
-  def contains(e: E)
+  def contains(e: E): Boolean
 
-  def add(e: E): Boolean
+  def find(e: E): Int
+
+  def addLast(e: E): Boolean
+
+  def addFirst(e: E): Boolean
+
+  def add(index: Int, e: E): Boolean
+
+  def set(index: Int, e: E)
 
   /**
     *

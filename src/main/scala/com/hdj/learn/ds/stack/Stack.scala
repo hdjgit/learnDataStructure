@@ -19,8 +19,6 @@ trait Stack[E] {
     */
   def peek(): E
 
-  def remove(): E
-
   def isEmpty(): Boolean
 
   def size(): Int

@@ -19,6 +19,7 @@ class ArrayStack[E: ClassTag](var capacity: Int = 10) extends Stack[E] {
     for (i <- 0 until currentSize) {
       newArr(i) = arr(i)
     }
+    arr = newArr
     capacity = newCapacity
   }
 

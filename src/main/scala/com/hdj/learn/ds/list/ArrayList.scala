@@ -63,11 +63,11 @@ class ArrayList[E <% Ordered[E] : ClassTag](private var capacity: Int = 5) exten
   //    true
   //  }
 
-  override def addLast(e: E): Boolean = add(currentSize, e)
+  override def addLast(e: E) = add(currentSize, e)
 
-  override def addFirst(e: E): Boolean = add(0, e)
+  override def addFirst(e: E) = add(0, e)
 
-  override def add(index: Int, e: E): Boolean = {
+  override def add(index: Int, e: E) = {
     if (index < 0 || index > currentSize) {
       throw new IndexOutOfBoundsException(s"$currentSize out of bounds")
     }
@@ -80,7 +80,6 @@ class ArrayList[E <% Ordered[E] : ClassTag](private var capacity: Int = 5) exten
     }
     arr(index) = e
     currentSize += 1
-    true
   }
 
   override def set(index: Int, e: E) = {

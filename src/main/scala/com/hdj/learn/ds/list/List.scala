@@ -16,11 +16,11 @@ trait List[E] {
 
   def find(e: E): Int
 
-  def addLast(e: E): Boolean
+  def addLast(e: E): Unit
 
-  def addFirst(e: E): Boolean
+  def addFirst(e: E): Unit
 
-  def add(index: Int, e: E): Boolean
+  def add(index: Int, e: E): Unit
 
   def set(index: Int, e: E)
 

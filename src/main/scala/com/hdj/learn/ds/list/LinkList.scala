@@ -50,9 +50,12 @@ class LinkList[E >: Null](var currentSize: Int = 0) extends List[E] {
   }
 
   override def addFirst(e: E) = {
-    val addedNode = new Node[E](null, e)
-    addedNode.next = head.next
-    head.next = addedNode
+    //    val addedNode = new Node[E](null, e)
+    //    addedNode.next = head.next
+    //    head.next = addedNode
+
+    //还可以这样
+    head.next = new Node[E](head.next, e)
     currentSize += 1
   }
 

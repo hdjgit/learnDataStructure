@@ -34,6 +34,12 @@ class StackQueue[E] extends Queue[E] {
     }
     val currentHead = head
     head = head.next
+
+    //补充
+    if (head == null)
+      tail = null
+
+    currentSize -= 1
     currentHead.data
   }
 
